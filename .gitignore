@@ -88,3 +88,9 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+# Firebase Config
+GoogleService-Info.plist
+
+# .DS_Store
+.DS_Store
