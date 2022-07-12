@@ -7,17 +7,16 @@
 
 import SwiftUI
 import GymspotKit
+import ComboPicker
 
 struct SetCell: View {
   @Binding var viewModel: SetCellViewModel
   
   var body: some View {
-    HStack(spacing: 20) {
+    VStack(spacing: 20) {
       Text("Set \(viewModel.index + 1)")
       
-      Spacer()
-      
-      LazyHStack {
+      HStack(spacing: 2) {
         ForEach($viewModel.values) { $value in
           VStack(spacing: 4) {
             Text(value.type.localizedName.uppercased())
@@ -26,10 +25,14 @@ struct SetCell: View {
               .foregroundColor(.secondary)
               .fixedSize()
             
-            TextField("", text: $value.draftValue)
-              .frame(width: 45)
-              .textFieldStyle(.roundedBorder)
-              .keyboardType(.numberPad)
+            ComboPicker(
+              title: value.type.localizedName,
+              manualTitle: "",
+              valueFormatter: viewModel.formatter(for: value.type),
+              content: .constant(viewModel.predefinedValues(for: value.type)),
+              value: $value.value.value
+            )
+            .keyboardType(.numberPad)
           }
         }
       }

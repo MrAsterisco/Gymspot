@@ -17,7 +17,7 @@ extension RoutineExerciseCell {
   
   final class RoutineExerciseCellViewModel: ViewModel {
     // MARK: - Dependencies
-    @Injected private var valueFormatter: ValueFormatterType
+    @Injected private var valueFormatter: ExerciseValueFormatterType
     
     // MARK: - Published State
     @Published var title = ""

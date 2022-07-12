@@ -48,11 +48,15 @@ public extension Resolver {
     register { StepsTimerManager(workoutsManager: $0.resolve()) }
       .implements(StepsTimerManagerType.self)
       .scope(.application)
+    
+    register { PredefinedValuesProvider() }
+      .implements(PredefinedValuesProviderType.self)
+      .scope(.application)
   }
   
   func registerFormatters() {
     register { ValueFormatter() }
-      .implements(ValueFormatterType.self)
+      .implements(ExerciseValueFormatterType.self)
       .scope(.application)
   }
 }

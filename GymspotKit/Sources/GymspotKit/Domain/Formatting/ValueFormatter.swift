@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ValueFormatter: ValueFormatterType {
+final class ValueFormatter: ExerciseValueFormatterType {
   // MARK: - Formatters
   private lazy var measurementFormatter = MeasurementFormatter()
   

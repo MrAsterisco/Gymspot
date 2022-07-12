@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "combopicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MrAsterisco/ComboPicker",
+      "state" : {
+        "revision" : "b50242908a9d61495c57cdc4471420cbcbc6dfc5",
+        "version" : "2.0.0"
+      }
+    },
+    {
       "identity" : "concaveprogressview",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MrAsterisco/ConcaveProgressView",

@@ -26,6 +26,7 @@
 		FA2176C42851284A00F68901 /* RoutineRestCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2176C32851284A00F68901 /* RoutineRestCellViewModel.swift */; };
 		FA38E1342842465B00EA7175 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA38E1332842465B00EA7175 /* WorkoutViewModel.swift */; };
 		FA3A071E284A9DF100E71B60 /* CurrentRestCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A071D284A9DF100E71B60 /* CurrentRestCellViewModel.swift */; };
+		FA3DD736287082CD00F37155 /* ComboPicker in Frameworks */ = {isa = PBXBuildFile; productRef = FA3DD735287082CD00F37155 /* ComboPicker */; };
 		FA4126642831214700565BC9 /* ExerciseDefinitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4126632831214700565BC9 /* ExerciseDefinitionCell.swift */; };
 		FA4126662831216100565BC9 /* ExerciseDefinitionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4126652831216100565BC9 /* ExerciseDefinitionCellViewModel.swift */; };
 		FA41267228312B3600565BC9 /* WorkoutPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41267128312B3600565BC9 /* WorkoutPlanView.swift */; };
@@ -155,6 +156,7 @@
 				FADB66CF284A69DB00414CD7 /* ConcaveProgressView in Frameworks */,
 				FA1E41CF2824521800591D71 /* FirebaseAuth in Frameworks */,
 				FA1E41D12824521800591D71 /* FirebaseFirestore in Frameworks */,
+				FA3DD736287082CD00F37155 /* ComboPicker in Frameworks */,
 				FA1E41D8282452F200591D71 /* Resolver in Frameworks */,
 				FA1E41D32824521800591D71 /* FirebaseFirestoreSwift in Frameworks */,
 				FAD4783528551C8A00B4DF16 /* GymspotKit in Frameworks */,
@@ -552,6 +554,7 @@
 				FA1E41D7282452F200591D71 /* Resolver */,
 				FADB66CE284A69DB00414CD7 /* ConcaveProgressView */,
 				FAD4783428551C8A00B4DF16 /* GymspotKit */,
+				FA3DD735287082CD00F37155 /* ComboPicker */,
 			);
 			productName = Gymspot;
 			productReference = FA1E419628244F9100591D71 /* Gymspot.app */;
@@ -607,6 +610,7 @@
 				FA1E41CD2824521800591D71 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				FA1E41D6282452F200591D71 /* XCRemoteSwiftPackageReference "Resolver" */,
 				FADB66CD284A69DB00414CD7 /* XCRemoteSwiftPackageReference "ConcaveProgressView" */,
+				FA3DD734287082CD00F37155 /* XCRemoteSwiftPackageReference "ComboPicker" */,
 			);
 			productRefGroup = FA1E419728244F9100591D71 /* Products */;
 			projectDirPath = "";
@@ -979,6 +983,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		FA3DD734287082CD00F37155 /* XCRemoteSwiftPackageReference "ComboPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MrAsterisco/ComboPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		FADB66CD284A69DB00414CD7 /* XCRemoteSwiftPackageReference "ConcaveProgressView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MrAsterisco/ConcaveProgressView";
@@ -1009,6 +1021,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA1E41D6282452F200591D71 /* XCRemoteSwiftPackageReference "Resolver" */;
 			productName = Resolver;
+		};
+		FA3DD735287082CD00F37155 /* ComboPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA3DD734287082CD00F37155 /* XCRemoteSwiftPackageReference "ComboPicker" */;
+			productName = ComboPicker;
 		};
 		FAD4783428551C8A00B4DF16 /* GymspotKit */ = {
 			isa = XCSwiftPackageProductDependency;

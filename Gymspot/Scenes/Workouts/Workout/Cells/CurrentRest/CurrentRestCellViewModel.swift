@@ -13,7 +13,7 @@ extension CurrentRestCell {
   final class CurrentRestCellViewModel: ViewModel {
     // MARK: - Dependencies
     @Injected private var workoutsManager: WorkoutsManagerType
-    @Injected private var valueFormatter: ValueFormatterType
+    @Injected private var valueFormatter: ExerciseValueFormatterType
     
     // MARK: - Published State
     @Published var currentStep: WorkoutStep?

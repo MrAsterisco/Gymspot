@@ -26,15 +26,21 @@ struct WorkoutsTab: View {
               Button(action: {
                 viewModel.select(workout: workout)
               }) {
-                Text(workout.name)
-                  .foregroundColor(.black)
-                  .bold()
+                HStack(alignment: .center) {
+                  Text(workout.name)
+                    .foregroundColor(.black)
+                    .bold()
+                  
+                  Spacer()
+                  
+                  Text(workout.state.label ?? "")
+                    .foregroundColor(.black)
+                    .font(.caption2)
+                    .bold()
+                }
               }
-              .listRowBackground(Color("Start"))
+              .listRowBackground(workout.state.background)
             }
-          } header: {
-            Text("Active")
-              .headerProminence(.increased)
           }
         }
         
@@ -175,6 +181,30 @@ private extension GroupedItem {
   
   var kind: Kind {
     children != nil ? .folder : .routine
+  }
+}
+
+private extension Workout.State {
+  var background: Color? {
+    switch self {
+    case .running:
+      return Color("Start")
+    case .paused:
+      return Color("Pause")
+    default:
+      return nil
+    }
+  }
+  
+  var label: LocalizedStringKey? {
+    switch self {
+    case .running:
+      return "ACTIVE"
+    case .paused:
+      return "PAUSED"
+    default:
+      return nil
+    }
   }
 }
 

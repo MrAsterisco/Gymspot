@@ -125,7 +125,7 @@ private extension ConfigureExerciseView.ConfigureExerciseViewModel {
       element.values = exercise?.valueTypes.map {
         .init(
           type: $0,
-          draftValue: ""
+          value: .init(value: 1)
         )
       } ?? []
     }

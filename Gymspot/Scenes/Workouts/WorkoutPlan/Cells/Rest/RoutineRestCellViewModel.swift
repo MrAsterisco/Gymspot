@@ -12,7 +12,7 @@ import GymspotKit
 extension RoutineRestCell {
   final class RoutineRestCellViewModel: ViewModel {
     // MARK: - Dependencies
-    @Injected private var valueFormatter: ValueFormatterType
+    @Injected private var valueFormatter: ExerciseValueFormatterType
     
     // MARK: - Published State
     @Published var restTime = ""

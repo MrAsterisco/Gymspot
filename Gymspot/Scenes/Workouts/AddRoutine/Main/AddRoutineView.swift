@@ -11,7 +11,9 @@ import GymspotKit
 struct AddRoutineView: View {
   @Environment(\.presentationMode) var presentationMode
   @StateObject private var viewModel = AddRoutineViewModel()
+  
   @State private var isAddingExercise = false
+  @State private var isEditingExercises = EditMode.inactive
   
   let mode: Mode
   

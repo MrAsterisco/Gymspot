@@ -13,7 +13,7 @@ import GymspotKit
 extension ComingUpExerciseCell {
   final class ComingUpExerciseViewModel: ViewModel {
     // MARK: - Dependencies
-    @Injected private var valueFormatter: ValueFormatterType
+    @Injected private var valueFormatter: ExerciseValueFormatterType
     
     // MARK: - Published State
     @Published var icon: Image?

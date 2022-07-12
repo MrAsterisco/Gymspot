@@ -8,15 +8,56 @@
 import Foundation
 import Combine
 import GymspotKit
+import Resolver
+import ComboPicker
 
 extension SetCell {
+  public final class ExerciseValueFormatter: ValueFormatterType {
+    private let valueType: ValueType
+    private let baseFormatter: ExerciseValueFormatterType
+    
+    init(valueType: ValueType, baseFormatter: ExerciseValueFormatterType) {
+      self.valueType = valueType
+      self.baseFormatter = baseFormatter
+    }
+    
+    public func string(from value: DraftValue) -> String {
+      baseFormatter.string(forValue: value.value, ofType: valueType) ?? "\(value)"
+    }
+  }
+  
   struct DraftExerciseValue: Identifiable, Equatable, Hashable {
     let id = UUID()
     let type: ValueType
-    var draftValue: String
+    var value: DraftValue
+  }
+  
+  struct DraftValue: ComboPickerModel {
+    let id = UUID()
+    var value: Double
+    
+    init(value: Double) {
+      self.value = value
+    }
+    
+    init?(customValue: String) {
+      guard
+        let value = NumberFormatter().number(from: customValue)?.doubleValue
+      else { return nil }
+      
+      self.init(value: value)
+    }
+    
+    var valueForManualInput: String? {
+      NumberFormatter().string(from: .init(value: value))
+    }
   }
   
   final class SetCellViewModel: ViewModel {
+    // MARK: - Dependencies
+    @Injected private var predefinedValuesProvider: PredefinedValuesProviderType
+    @Injected private var exerciseValueFormatter: ExerciseValueFormatterType
+    
     // MARK: - Identification
     let id = UUID()
     
@@ -27,13 +68,11 @@ extension SetCell {
     
     // MARK: - Initializer
     init(index: Int = 0, values: [ExerciseValue] = []) {
-      let numberFormatter = NumberFormatter()
-      
       self.index = index
       self.values = values.map {
         .init(
           type: $0.type,
-          draftValue: numberFormatter.string(from: NSNumber(value: $0.value)) ?? ""
+          value: .init(value: $0.value)
         )
       }
     }
@@ -47,17 +86,29 @@ extension SetCell {
     
     // MARK: - Actions
     func createSet() -> ExerciseSetDefinition {
-      let numberFormatter = NumberFormatter()
-      
-      return .init(
+      .init(
         index: index,
         name: nil, // TODO: add support for set names
         values: values.map {
           .init(
             type: $0.type,
-            value: numberFormatter.number(from: $0.draftValue)?.doubleValue ?? 0
+            value: $0.value.value
           )
         }
+      )
+    }
+    
+    func predefinedValues(for valueType: ValueType) -> [DraftValue] {
+      predefinedValuesProvider.predefinedValues(for: valueType)
+        .map {
+          .init(value: $0)
+        }
+    }
+    
+    func formatter(for valueType: ValueType) -> ExerciseValueFormatter {
+      ExerciseValueFormatter(
+        valueType: valueType,
+        baseFormatter: exerciseValueFormatter
       )
     }
   }

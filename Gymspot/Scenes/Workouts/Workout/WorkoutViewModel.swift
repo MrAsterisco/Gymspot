@@ -23,7 +23,7 @@ extension WorkoutView {
     // MARK: - Dependencies
     @Injected private var workoutsManager: WorkoutsManagerType
     @Injected private var stepCellFactory: StepCellFactoryType
-    @Injected private var valueFormatter: ValueFormatterType
+    @Injected private var valueFormatter: ExerciseValueFormatterType
     
     // MARK: - Published State
     @Published var workout: Workout?
